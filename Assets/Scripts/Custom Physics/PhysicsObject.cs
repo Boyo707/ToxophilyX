@@ -13,6 +13,7 @@ namespace CustomPhysics
 
         [Header("Physics")]
         [SerializeField] private float mass = 1;
+        [SerializeField] private bool isPlanet = false;
         [SerializeField] private float restitution = 0.9f;
         [SerializeField] private float friction = 0.001f;
         [SerializeField] private bool hasGravity = true;
@@ -34,6 +35,7 @@ namespace CustomPhysics
 
         //velocity
         public float Mass => mass;
+        public bool IsPlanet => isPlanet;
         public float Restitution => restitution;
         public float Friction => friction;
         public bool HasGravity => hasGravity;

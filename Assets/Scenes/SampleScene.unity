@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -729,6 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -757,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &469272147
 Transform:
   m_ObjectHideFlags: 0
@@ -1060,9 +1063,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
   mass: 1
+  isPlanet: 1
   restitution: 0.9
   friction: 0.1
-  hasGravity: 1
+  hasGravity: 0
   gravityMultiplier: 1
   localGravityDirection: {x: 0, y: 0, z: 0}
   type: 0
@@ -1361,6 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -1525,9 +1530,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
   mass: 2
+  isPlanet: 0
   restitution: 0.9
   friction: 0.1
-  hasGravity: 1
+  hasGravity: 0
   gravityMultiplier: 1
   localGravityDirection: {x: 0, y: 0, z: 0}
   type: 0
@@ -1735,6 +1741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -1900,6 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -2205,6 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -2461,6 +2470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
   mass: 0
+  isPlanet: 0
   restitution: 0
   friction: 0
   hasGravity: 0
@@ -2915,7 +2925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2082340593
 Transform:
   m_ObjectHideFlags: 0
@@ -3033,6 +3043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   mass: 1
+  isPlanet: 0
   restitution: 0.7
   friction: 0.1
   hasGravity: 1

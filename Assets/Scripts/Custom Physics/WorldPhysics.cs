@@ -14,6 +14,8 @@ namespace CustomPhysics
 
         public List<PhysicsObject> physObjs = new();
 
+        private float g = 6.674f * Mathf.Pow(10, 11);
+
         private void Awake()
         {
             if (instance != null)
@@ -61,7 +63,23 @@ namespace CustomPhysics
                     PhysicsObject otherObj = physObjs[j];
                     if (currentObj == otherObj) continue;
 
-                    if (currentObj.velocity == Vector3.zero) continue;
+                    if (currentObj.IsPlanet)
+                    {
+                        Vector3 direction = otherObj.physPosition - currentObj.physPosition;
+                        float distance = direction.magnitude;
+
+                        if (distance < 0) continue;
+
+                        float gForce = 1 * (currentObj.Mass * otherObj.Mass) / Mathf.Pow(distance, 2);
+                        float devidedG = gForce / currentObj.Mass;
+
+                        Vector3 acceleration = direction.normalized * gForce;
+                        Debug.Log(direction.normalized);
+                        Debug.Log(acceleration);
+                        currentObj.velocity += acceleration;
+                    }
+
+                    if (currentObj.velocity == Vector3.zero || currentObj.IsPlanet) continue;
 
                     if (DotProductLineSphere(currentObj, otherObj) < 0)
                     {
@@ -125,8 +143,8 @@ namespace CustomPhysics
                 Debug.Log("Starting velocity: " + thisVelocity + " reflected: " + reflectedVelocity);
                 currentObj.velocity = reflectedVelocity;
             }
-            
-            
+
+
         }
         public void AssignPhysicsObject(PhysicsObject physObj)
         {
