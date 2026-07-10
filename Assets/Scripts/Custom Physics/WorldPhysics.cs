@@ -1,93 +1,136 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldPhysics : MonoBehaviour
+namespace CustomPhysics
 {
-    [SerializeField] private float gravitationalForce = 9.81f;
-    [SerializeField] private float gravityScalar = 200;
-    [SerializeField] private float velocityScalar = 1;
-
-    public static WorldPhysics instance;
-
-    public List<PhysicsObject> physObjs = new();
-
-    private void Awake()
+    public class WorldPhysics : MonoBehaviour
     {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        if (gravityScalar == 0)
-        {
-            Debug.LogError("Cant have the gravityScalar at 0");
-        }
-        if(velocityScalar == 0)
-        {
-            Debug.LogError("Cant have the velocityScalar at 0");
-        }
-    }
-    private void FixedUpdate()
-    {        
-        for (int i = 0; i < physObjs.Count; i++)
-        {
-            PhysicsObject currentObj = physObjs[i];
+        [SerializeField] private float gravitationalForce = 9.81f;
+        [SerializeField] private Vector3 worldGravitDir = Vector3.down;
+        [SerializeField] private float velocityScalar = 1;
+        [SerializeField] private float collisionSkin = 0.1f;
 
-            currentObj.Position[0] += currentObj.Velocity[0] / velocityScalar;
-            currentObj.Position[1] += currentObj.Velocity[1] / velocityScalar;
-            currentObj.Velocity[1] += currentObj.Mass * -gravitationalForce / gravityScalar * currentObj.GravityMultiplier;
+        public static WorldPhysics instance;
 
-            if (physObjs[i].hasCollided)
+        public List<PhysicsObject> physObjs = new();
+
+        private void Awake()
+        {
+            if (instance != null)
             {
+                Destroy(gameObject);
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
             }
 
-            for (int j = 0; j < physObjs.Count; j++)
+            if (velocityScalar == 0)
             {
-                PhysicsObject otherObj = physObjs[j];
-                if (currentObj == otherObj || currentObj.vecVelocity() == Vector2.zero) continue;
+                Debug.LogError("Cant have the velocityScalar at 0");
+            }
+            if (worldGravitDir.x > 1 || worldGravitDir.y > 1)
+            {
+                Debug.LogError("Keep gravity direction values between 0 and 1");
+            }
+        }
 
-                if(DotProductLineSphere(currentObj, otherObj) < 0)
+        private void FixedUpdate()
+        {
+            for (int i = 0; i < physObjs.Count; i++)
+            {
+                PhysicsObject currentObj = physObjs[i];
+
+                if (currentObj.HasGravity)
                 {
-                    currentObj.Velocity[1] *= -0.95f;
+                    Vector3 gravityDir = currentObj.LocalGravityDirection == worldGravitDir ? worldGravitDir : currentObj.LocalGravityDirection;
+
+                    currentObj.velocity += (gravityDir * gravitationalForce * currentObj.GravityMultiplier * Time.fixedDeltaTime);
                 }
-                
+
+
+                currentObj.physPosition += currentObj.velocity * Time.fixedDeltaTime;
+
+
+                //Zorgh er voor dat de planeet mischien beweegt. maar dat andere objecten aangetrokken zijn.
+                //maak een range circle dat bepaald of een object attracted kan worden of niet
+
+                for (int j = 0; j < physObjs.Count; j++)
+                {
+                    PhysicsObject otherObj = physObjs[j];
+                    if (currentObj == otherObj) continue;
+
+                    if (currentObj.velocity == Vector3.zero) continue;
+
+                    if (DotProductLineSphere(currentObj, otherObj) < 0)
+                    {
+                        NewVelocity(currentObj, otherObj);
+                    }
+
+                }
+
+                currentObj.ApplyPhysics();
             }
-
-            currentObj.ApplyPhysics();
         }
-    }
 
-    private float DotProductLineSphere(PhysicsObject currentObj, PhysicsObject otherObj)
-    {
-        Vector3 displacement = currentObj.vecPosition() - otherObj.vecPosition();
-        Vector3 projection = Vector3.Project(displacement, otherObj.GetLineNormal());
-        return Vector3.Dot(otherObj.GetLineNormal(), projection);
-    }
-
-    private void IdentifyCollision(PhysicsObject currentObj, PhysicsObject otherObj)
-    {
-        //identify collision
-        switch (currentObj.ColliderShape)
+        private float DotProductLineSphere(PhysicsObject currentObj, PhysicsObject otherObj)
         {
-            case ColliderType.Circle:
-                break;
-            case ColliderType.Line:
-                break;
-            case ColliderType.Square:
-                break;
+            Vector3 displacement = currentObj.physPosition - otherObj.physPosition;
+            Vector3 projection = Vector3.Project(displacement, otherObj.GetLineNormal());
+            return Vector3.Dot(displacement, otherObj.GetLineNormal()) - currentObj.Radius;
         }
-    }
 
-    public void AssignPhysicsObject(PhysicsObject physObj)
-    {
-        physObjs.Add(physObj);
+        private void NewVelocity(PhysicsObject currentObj, PhysicsObject otherObj)
+        {
+            Vector3 thisVelocity = currentObj.velocity;
+            Vector3 normal = otherObj.GetLineNormal();
+            float normalVelocityDot = Vector2.Dot(thisVelocity, normal);
+            float magnitude = thisVelocity.magnitude;
+
+            //add a check if its going down hill 
+            if (magnitude < 0.66f)
+            {
+                //start resting
+                float dot = DotProductLineSphere(currentObj, otherObj);
+                Vector3 diff = normal * -dot;
+
+                currentObj.physPosition += diff;
+
+                // Stop the bounce.
+                currentObj.velocity = Vector3.zero;
+            }
+            else
+            {
+                //bounce
+
+                //place above collision line to prevent clipping
+                float projDot = DotProductLineSphere(currentObj, otherObj);
+
+                Vector3 diff = otherObj.GetLineNormal() * (-projDot + collisionSkin);
+
+                currentObj.physPosition += diff;
+
+                //bounce code
+                Vector3 normalVelocity = normalVelocityDot * normal;
+
+                Vector3 tangentVelocity = thisVelocity - normalVelocity;
+
+                normalVelocity = -normalVelocity * currentObj.Restitution;
+
+                tangentVelocity *= (1f - currentObj.Friction);
+
+                Vector3 reflectedVelocity = normalVelocity + tangentVelocity;
+
+                Debug.Log("Starting velocity: " + thisVelocity + " reflected: " + reflectedVelocity);
+                currentObj.velocity = reflectedVelocity;
+            }
+            
+            
+        }
+        public void AssignPhysicsObject(PhysicsObject physObj)
+        {
+            physObjs.Add(physObj);
+        }
     }
 }
