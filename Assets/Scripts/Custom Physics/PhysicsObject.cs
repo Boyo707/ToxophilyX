@@ -11,16 +11,17 @@ namespace CustomPhysics
     public class PhysicsObject : MonoBehaviour
     {
 
-
         [Header("Physics")]
         [SerializeField] private float mass = 1;
         [SerializeField] private float restitution = 0.9f;
         [SerializeField] private float friction = 0.001f;
+        [SerializeField] private bool hasGravity = true;
         [SerializeField] private float gravityMultiplier = 1;
+        [SerializeField] private Vector3 localGravityDirection = Vector3.down;
 
         [Header("Collision")]
         [SerializeField] private ColliderType type = ColliderType.Circle;
-        [SerializeField] private Vector2 offset;
+        [SerializeField] private Vector3 offset;
         [Header("Circle")]
         [SerializeField] private float radius;
         [Header("Line")]
@@ -28,27 +29,22 @@ namespace CustomPhysics
         [SerializeField] private float edgelength;
         private Vector2 netForce;
 
+
+
+
         //velocity
         public float Mass => mass;
         public float Restitution => restitution;
         public float Friction => friction;
+        public bool HasGravity => hasGravity;
         public float GravityMultiplier => gravityMultiplier;
+        public Vector3 LocalGravityDirection => localGravityDirection;
         public float Radius => radius;
         public Vector2 NetForce => netForce;
 
-        [SerializeField] private float[] position = new float[2];
-        public float[] Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
+        public Vector3 physPosition = Vector3.zero;
 
-        [SerializeField] private float[] velocity = new float[2];
-        public float[] Velocity
-        {
-            get { return velocity; }
-            set { velocity = value; }
-        }
+        public Vector3 velocity = Vector3.zero;
 
         //collision
         //line
@@ -60,46 +56,46 @@ namespace CustomPhysics
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            position[0] = transform.position.x + offset.x;
-            position[1] = transform.position.y + offset.y;
+            physPosition = transform.position + offset;
 
             WorldPhysics.instance.AssignPhysicsObject(this);
         }
 
-        public void ApplyPhysics()
+        private void LateUpdate()
         {
-            if (gameObject.name == "Arrow")
-            {
-                
-                transform.position = vecPosition() - new Vector3(offset.x, offset.y, 0);
-            }
+            physPosition = transform.position;
         }
 
-        public Vector3 vecPosition()
+        public void ApplyPhysics()
         {
-            return new Vector3(position[0], position[1], 0);
+            transform.position = physPosition - offset;
         }
-        public Vector2 vecVelocity()
+
+        public void SetVelocity(Vector3 newVelocity)
         {
-            return new Vector2(velocity[0], velocity[1]);
+            velocity = newVelocity;
+        }
+
+        public void AddVelocity(Vector3 velocityAddition)
+        {
+            velocity += velocityAddition;
         }
 
         public Vector3 GetLineNormal()
         {
-            Vector3 newOffset = new Vector3(offset.x, offset.y, 0);
-            //return Vector2.Perpendicular(transform.position + newOffset - transform.right).normalized;
+            Vector3 newOffset = offset;
             return Vector2.Perpendicular(transform.right).normalized;
         }
 
         private void OnDrawGizmos()
         {
-            Vector3 newOffset = new Vector3(offset.x, offset.y, 0);
+            Vector3 newOffset = offset;
             Vector3 center = transform.position + newOffset;
             Gizmos.color = Color.red;
             //circle
             Gizmos.DrawWireSphere(center, radius);
 
-            Gizmos.DrawRay(transform.position + new Vector3(offset.x, offset.y, 0), new Vector3(velocity[0], velocity[1], 0));
+            Gizmos.DrawRay(transform.position + offset, velocity);
 
             //line
             float lineBaseLength = (lineLength - edgelength) / 2;
