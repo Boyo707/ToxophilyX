@@ -4,16 +4,18 @@ namespace CustomPhysics
 {
     public enum ColliderType
     {
-        Circle,
-        Line,
-        Square
+        Circle = 1,
+        Line = 2,
+        Square = 4
     }
     public class PhysicsObject : MonoBehaviour
     {
 
         [Header("Physics")]
         [SerializeField] private float mass = 1;
+        [SerializeField] private bool isTrigger = false;
         [SerializeField] private bool isPlanet = false;
+        [SerializeField] private float planetPullDistance = 0;
         [SerializeField] private float restitution = 0.9f;
         [SerializeField] private float friction = 0.001f;
         [SerializeField] private bool hasGravity = true;
@@ -35,7 +37,9 @@ namespace CustomPhysics
 
         //velocity
         public float Mass => mass;
+        public bool IsTrigger => isTrigger;
         public bool IsPlanet => isPlanet;
+        public float PlanetPullDistance => planetPullDistance;
         public float Restitution => restitution;
         public float Friction => friction;
         public bool HasGravity => hasGravity;
@@ -51,6 +55,7 @@ namespace CustomPhysics
         //collision
         //line
         public bool hasCollided = false;
+        public bool hasTriggered = false;
 
         public ColliderType ColliderShape => type;
 
@@ -107,6 +112,9 @@ namespace CustomPhysics
             Gizmos.DrawLine(center - transform.right * lineBaseLength, center - transform.right * lineLength / 2);
             //Gizmos.DrawRay(center, Vector2.Perpendicular(transform.right * lineBaseLength).normalized);
             Gizmos.DrawRay(center, GetLineNormal());
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(center, planetPullDistance);
         }
     }
 }
