@@ -53,7 +53,6 @@ namespace CustomPhysics
                 currentObj.physPosition += currentObj.velocity * Time.fixedDeltaTime;
 
 
-                //Zorgh er voor dat de planeet mischien beweegt. maar dat andere objecten aangetrokken zijn.
                 //maak een range circle dat bepaald of een object attracted kan worden of niet
 
                 for (int j = 0; j < physObjs.Count; j++)
@@ -61,12 +60,14 @@ namespace CustomPhysics
                     PhysicsObject otherObj = physObjs[j];
                     if (currentObj == otherObj) continue;
 
+                    if (otherObj.IsPlanet)
+                    {
+                        PlanetPhysics(currentObj, otherObj);
+                    }
+
                     if (currentObj.velocity == Vector3.zero) continue;
 
-                    if (DotProductLineSphere(currentObj, otherObj) < 0)
-                    {
-                        NewVelocity(currentObj, otherObj);
-                    }
+                    VerifyCollision(currentObj, otherObj);
 
                 }
 
@@ -74,17 +75,62 @@ namespace CustomPhysics
             }
         }
 
-        private float DotProductLineSphere(PhysicsObject currentObj, PhysicsObject otherObj)
+        private void VerifyCollision(PhysicsObject current, PhysicsObject other)
         {
-            Vector3 displacement = currentObj.physPosition - otherObj.physPosition;
-            Vector3 projection = Vector3.Project(displacement, otherObj.GetLineNormal());
-            return Vector3.Dot(displacement, otherObj.GetLineNormal()) - currentObj.Radius;
+            int collisionIndex = (int)current.ColliderShape + (int)other.ColliderShape;
+            Debug.Log(collisionIndex);
+            if (collisionIndex == 2)
+            {
+                if(SpheresInRange(current, other))
+                {
+                    Vector3 normal = (current.physPosition - other.physPosition).normalized;
+                    float distanceOffset = current.Radius + other.Radius;
+                    BounceOfCollider(current, other, normal, distanceOffset);
+                }
+                //sphere + sphere
+            }
+            else if (collisionIndex == 3)
+            {
+                //sphere + line
+
+                //check which object is which shape.
+                PhysicsObject sphere = (int) current.ColliderShape == 1 ? current : other;
+                PhysicsObject line = (int)other.ColliderShape == 1 ? current : other;
+
+                
+
+                if(ProjectionDot(sphere, line, line.GetLineNormal(), sphere.Radius) < 0)
+                {
+                    BounceOfCollider(current, other, line.GetLineNormal(), sphere.Radius);
+                }
+                
+            }
+            else if (collisionIndex == 4)
+            {
+                //Line + line
+            }
+            else if (collisionIndex == 8)
+            {
+                //square + square
+            }
         }
 
-        private void NewVelocity(PhysicsObject currentObj, PhysicsObject otherObj)
+        private bool SpheresInRange(PhysicsObject current, PhysicsObject other)
+        {
+            return Vector3.Distance(current.physPosition, other.physPosition) - current.Radius - other.Radius <= 0;
+        }
+
+        private float ProjectionDot(PhysicsObject currentObj, PhysicsObject otherObj, Vector3 targetNormal, float someDistance)
+        {
+            Vector3 displacement = currentObj.physPosition - otherObj.physPosition;
+            Vector3 projection = Vector3.Project(displacement, targetNormal);
+            return Vector3.Dot(displacement, targetNormal) - someDistance;
+        }
+
+        private void BounceOfCollider(PhysicsObject currentObj, PhysicsObject otherObj, Vector3 targetNormal, float someDistance)
         {
             Vector3 thisVelocity = currentObj.velocity;
-            Vector3 normal = otherObj.GetLineNormal();
+            Vector3 normal = targetNormal;
             float normalVelocityDot = Vector2.Dot(thisVelocity, normal);
             float magnitude = thisVelocity.magnitude;
 
@@ -92,7 +138,7 @@ namespace CustomPhysics
             if (magnitude < 0.66f)
             {
                 //start resting
-                float dot = DotProductLineSphere(currentObj, otherObj);
+                float dot = ProjectionDot(currentObj, otherObj, targetNormal, someDistance);
                 Vector3 diff = normal * -dot;
 
                 currentObj.physPosition += diff;
@@ -105,9 +151,9 @@ namespace CustomPhysics
                 //bounce
 
                 //place above collision line to prevent clipping
-                float projDot = DotProductLineSphere(currentObj, otherObj);
+                float projDot = ProjectionDot(currentObj, otherObj, targetNormal, someDistance);
 
-                Vector3 diff = otherObj.GetLineNormal() * (-projDot + collisionSkin);
+                Vector3 diff = normal * (-projDot + collisionSkin);
 
                 currentObj.physPosition += diff;
 
@@ -125,9 +171,27 @@ namespace CustomPhysics
                 Debug.Log("Starting velocity: " + thisVelocity + " reflected: " + reflectedVelocity);
                 currentObj.velocity = reflectedVelocity;
             }
-            
-            
         }
+
+        private void PlanetPhysics(PhysicsObject currentObj, PhysicsObject otherObj)
+        {
+            if (Vector3.Distance(otherObj.physPosition, currentObj.physPosition) - otherObj.PlanetPullDistance - currentObj.Radius <= 0)
+            {
+                Vector3 direction = otherObj.physPosition - currentObj.physPosition;
+                float distance = direction.magnitude;
+
+                if (distance < 0) return;
+
+                float gForce = 1 * (currentObj.Mass * otherObj.Mass) / Mathf.Pow(distance, 2);
+                float devidedG = gForce / currentObj.Mass;
+
+                Vector3 acceleration = direction.normalized * gForce;
+                Debug.Log(direction.normalized);
+                Debug.Log(acceleration);
+                currentObj.velocity += acceleration;
+            }
+        }
+
         public void AssignPhysicsObject(PhysicsObject physObj)
         {
             physObjs.Add(physObj);
