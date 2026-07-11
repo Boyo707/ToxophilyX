@@ -18,6 +18,7 @@ namespace CustomPhysics
         [SerializeField] private float planetPullDistance = 0;
         [SerializeField] private float restitution = 0.9f;
         [SerializeField] private float friction = 0.001f;
+        [SerializeField] private bool lockRotation = false;
         [SerializeField] private bool hasGravity = true;
         [SerializeField] private float gravityMultiplier = 1;
         [SerializeField] private Vector3 localGravityDirection = Vector3.down;
@@ -52,6 +53,8 @@ namespace CustomPhysics
 
         public Vector3 velocity = Vector3.zero;
 
+        public float rotation = 0;
+
         //collision
         //line
         public bool hasCollided = false;
@@ -76,6 +79,17 @@ namespace CustomPhysics
         public void ApplyPhysics()
         {
             transform.position = physPosition - offset;
+
+            if (!lockRotation)
+            {
+                Vector2 normalized = velocity.normalized;
+
+                float radians = Mathf.Atan2(normalized.x, normalized.y);
+
+                rotation = radians * Mathf.Rad2Deg;
+
+                transform.eulerAngles = new Vector3(0, 0, -rotation);
+            }
         }
 
         public void SetVelocity(Vector3 newVelocity)
