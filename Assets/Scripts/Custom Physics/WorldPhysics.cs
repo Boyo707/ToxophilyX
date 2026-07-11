@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 namespace CustomPhysics
 {
@@ -70,7 +71,11 @@ namespace CustomPhysics
                     VerifyCollision(currentObj, otherObj);
 
                 }
-
+                if (currentObj == null)
+                {
+                    RemoveEmpty();
+                    continue;
+                }
                 currentObj.ApplyPhysics();
             }
         }
@@ -78,16 +83,34 @@ namespace CustomPhysics
         private void VerifyCollision(PhysicsObject current, PhysicsObject other)
         {
             int collisionIndex = (int)current.ColliderShape + (int)other.ColliderShape;
-            Debug.Log(collisionIndex);
             if (collisionIndex == 2)
             {
                 if(SpheresInRange(current, other))
                 {
-                    Vector3 normal = (current.physPosition - other.physPosition).normalized;
-                    float distanceOffset = current.Radius + other.Radius;
-                    BounceOfCollider(current, other, normal, distanceOffset);
+                    
+                    if (current.IsTrigger)
+                    {
+                        current.hasTriggered = true;
+                    }
+                    else if (other.IsTrigger)
+                    {
+                        other.hasTriggered = true;
+                    }
+                    else
+                    {
+                        current.hasCollided = true;
+                        Vector3 normal = (current.physPosition - other.physPosition).normalized;
+                        float distanceOffset = current.Radius + other.Radius;
+                        BounceOfCollider(current, other, normal, distanceOffset);
+                    }
                 }
-                //sphere + sphere
+                else
+                {
+                    if (current.hasTriggered) current.hasTriggered = false;
+                    if (current.hasCollided) current.hasCollided = false;
+                    if (other.hasTriggered) other.hasTriggered = false;
+                    if (other.hasCollided) other.hasCollided = false;
+                }
             }
             else if (collisionIndex == 3)
             {
@@ -97,11 +120,28 @@ namespace CustomPhysics
                 PhysicsObject sphere = (int) current.ColliderShape == 1 ? current : other;
                 PhysicsObject line = (int)other.ColliderShape == 1 ? current : other;
 
-                
-
                 if(ProjectionDot(sphere, line, line.GetLineNormal(), sphere.Radius) < 0)
                 {
-                    BounceOfCollider(current, other, line.GetLineNormal(), sphere.Radius);
+                    if (current.IsTrigger)
+                    {
+                        current.hasTriggered = true;
+                    }
+                    else if (other.IsTrigger)
+                    {
+                        other.hasTriggered = true;
+                    }
+                    else
+                    {
+                        current.hasCollided = true;
+                        BounceOfCollider(current, other, line.GetLineNormal(), sphere.Radius);
+                    }
+                }
+                else
+                {
+                    if (current.hasTriggered) current.hasTriggered = false;
+                    if (current.hasCollided) current.hasCollided = false;
+                    if (other.hasTriggered) other.hasTriggered = false;
+                    if (other.hasCollided) other.hasCollided = false;
                 }
                 
             }
@@ -189,6 +229,18 @@ namespace CustomPhysics
                 Debug.Log(direction.normalized);
                 Debug.Log(acceleration);
                 currentObj.velocity += acceleration;
+            }
+        }
+
+        private void RemoveEmpty()
+        {
+            for (int i = 0; i < physObjs.Count; i++)
+            {
+                if (physObjs[i] == null)
+                {
+                    physObjs.RemoveAt(i);
+                    i = 0;
+                }
             }
         }
 
