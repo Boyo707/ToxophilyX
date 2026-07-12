@@ -107,14 +107,16 @@ namespace CustomPhysics
                     if (current.IsTrigger)
                     {
                         current.hasTriggered = true;
+                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
-                        other.hasTriggered = true;
                     }
                     else
                     {
                         current.hasCollided = true;
+                        current.interactedObject = other;
+
                         Vector3 normal = (current.physPosition - other.physPosition).normalized;
                         float distanceOffset = current.Radius + other.Radius;
                         BounceOfCollider(current, other.physPosition, normal, distanceOffset);
@@ -124,8 +126,8 @@ namespace CustomPhysics
                 {
                     if (current.hasTriggered) current.hasTriggered = false;
                     if (current.hasCollided) current.hasCollided = false;
-                    if (other.hasTriggered) other.hasTriggered = false;
-                    if (other.hasCollided) other.hasCollided = false;
+                    current.interactedObject = null;
+
                 }
             }
             else if (collisionIndex == 3)
@@ -168,15 +170,17 @@ namespace CustomPhysics
                     if (current.IsTrigger)
                     {
                         current.hasTriggered = true;
+                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
-                        other.hasTriggered = true;
+                       
                     }
                     else
                     {
                         normal = CheckEdge(sphere, line, normal);
                         current.hasCollided = true;
+                        current.interactedObject = other;
                         BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
                 }
@@ -184,10 +188,9 @@ namespace CustomPhysics
                 {
                     if (current.hasTriggered) current.hasTriggered = false;
                     if (current.hasCollided) current.hasCollided = false;
-                    if (other.hasTriggered) other.hasTriggered = false;
-                    if (other.hasCollided) other.hasCollided = false;
+                    current.interactedObject = null;
                 }
-                
+
             }
             else if (collisionIndex == 4)
             {

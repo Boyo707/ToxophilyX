@@ -96,6 +96,8 @@ namespace CustomPhysics
         public float LineHeight => lineHeight;
         public float EdgeLength => edgelength;
 
+        public PhysicsObject interactedObject;
+
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()

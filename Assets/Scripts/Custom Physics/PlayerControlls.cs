@@ -80,9 +80,9 @@ public class PlayerControlls : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(mousePos, 1);
-        Gizmos.DrawRay(bow.position, direction);
+        Gizmos.DrawRay(shootingPoint.position, direction);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(bow.position, direction.normalized * strength);
+        Gizmos.DrawRay(shootingPoint.position, direction.normalized * strength);
     }
 }

@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bc97e8d9d113f834ab0c70c81969c06b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 5
   isTrigger: 0
   isPlanet: 1
@@ -117,10 +118,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
