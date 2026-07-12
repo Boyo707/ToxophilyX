@@ -246,8 +246,8 @@ MonoBehaviour:
   lineWidth: 0
   lineHeight: 0
   edgelength: 0
-  physPosition: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
+  physPosition: {x: -20.251364, y: 10.485835, z: 0}
+  velocity: {x: -7.713934, y: 1.0756545, z: 0}
   rotation: 0
   isGettingDestroyed: 0
   hasCollided: 0
@@ -265,3 +265,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb933a9505eb574f89ecf9f900958e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  particle: {fileID: 1053598249103507302, guid: 5f4caf59843886147add28caae7941bf, type: 3}

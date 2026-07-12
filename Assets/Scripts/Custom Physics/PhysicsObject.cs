@@ -125,7 +125,6 @@ namespace CustomPhysics
 
                 transform.eulerAngles = new Vector3(0, 0, -rotation);
             }
-
         }
 
         public void SetVelocity(Vector3 newVelocity)

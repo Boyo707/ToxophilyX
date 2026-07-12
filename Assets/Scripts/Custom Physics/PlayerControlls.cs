@@ -1,4 +1,5 @@
 using CustomPhysics;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,11 @@ public class PlayerControlls : MonoBehaviour
     [SerializeField] GameObject trajectoryOrb;
     [SerializeField] private int predictionSteps = 8;
     [SerializeField] private int visualSteps = 8;
+
+    [Header("Sprites")]
+    [SerializeField] private SpriteRenderer sprRenderer;
+    [SerializeField] private Sprite idle;
+    [SerializeField] private Sprite shot;
 
 
     private Vector3 direction;
@@ -33,6 +39,7 @@ public class PlayerControlls : MonoBehaviour
         {
             visualObjects.Add(Instantiate(trajectoryOrb, new Vector3(50, -50, 0), Quaternion.identity).transform);
         }
+
     }
 
     // Update is called once per frame
@@ -69,11 +76,22 @@ public class PlayerControlls : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            StopAllCoroutines();
+            StartCoroutine(SpriteShoot());
             if (previousArrow != null) previousArrow.GetComponent<PhysicsObject>().DestroyObject();
             previousArrow = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
             previousArrow.GetComponent<PhysicsObject>().SetVelocity(direction.normalized * strength);
         }
 
+    }
+
+    private IEnumerator SpriteShoot()
+    {
+        sprRenderer.sprite = idle;
+        yield return new WaitForSeconds(0.1f);
+        sprRenderer.sprite = shot;
+        yield return new WaitForSeconds(0.5f);
+        sprRenderer.sprite = idle;
     }
 
     private void OnDrawGizmos()

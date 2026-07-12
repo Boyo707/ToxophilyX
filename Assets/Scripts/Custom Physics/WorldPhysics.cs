@@ -41,6 +41,29 @@ namespace CustomPhysics
             for (int i = 0; i < physObjs.Count; i++)
             {
                 PhysicsObject currentObj = physObjs[i];
+
+                currentObj.hasCollided = false;
+                currentObj.hasTriggered = false;
+                currentObj.interactedObject = null;
+    
+
+                PhysicsStep(currentObj, physObjs).ApplyPhysics();
+                if (currentObj.isGettingDestroyed)
+                {
+                    physObjs.Remove(currentObj);
+                    Destroy(currentObj.gameObject);
+                    i--;
+                }
+            }
+
+
+            /*for (int i = 0; i < physObjs.Count; i++)
+            {
+                PhysicsObject currentObj = physObjs[i];
+
+                currentObj.hasTriggered = false;
+                currentObj.hasCollided = false;
+                currentObj.interactedObject = null;
             
                 PhysicsStep(currentObj, physObjs).ApplyPhysics();
                 if (currentObj.isGettingDestroyed)
@@ -105,7 +128,6 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
-                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -114,24 +136,14 @@ namespace CustomPhysics
                     }
                     else
                     {
-                        bool smth = SpheresInRange(current, other);
                         current.interactedObject = other;
                         current.hasCollided = true;
+                        other.hasCollided = true;
 
                         Vector3 normal = (current.physPosition - other.physPosition).normalized;
                         float distanceOffset = current.Radius + other.Radius;
                         BounceOfCollider(current, other.physPosition, normal, distanceOffset);
                     }
-                }
-                else
-                {
-                    if (current.hasTriggered) current.hasTriggered = false;
-                    if (current.hasCollided) current.hasCollided = false;
-                    if (other.hasTriggered) other.hasTriggered = false;
-                    if (other.hasCollided) other.hasCollided = false;
-                    current.interactedObject = null;
-                    other.interactedObject = null;
-
                 }
             }
             else if (collisionIndex == 3)
@@ -151,12 +163,6 @@ namespace CustomPhysics
 
                 Vector3 linePos = Vector3.zero;
                 Vector3 normal = Vector3.zero;
-
-                Debug.Log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
-                Debug.Log("bottom dist: " + bottomDistance + " sphere rad: " + sphere.Radius);
-                Debug.Log("bottom dist: " + -topNormal);
-                Debug.Log("top dist: " + topDistance + " sphere rad: " + sphere.Radius);
-                Debug.Log(0 < 1);
 
                 //to prevent clipping.
                 float clampedRadius = Mathf.Clamp(sphere.Radius, 0.3f, float.MaxValue);
@@ -179,7 +185,6 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
-                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -188,21 +193,12 @@ namespace CustomPhysics
                     }
                     else
                     {
-                        normal = CheckEdge(sphere, line, normal);
                         current.interactedObject = other;
                         current.hasCollided = true;
-                        current.interactedObject = other;
+
+                        normal = CheckEdge(sphere, line, normal);
                         BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
-                }
-                else
-                {
-                    if (current.hasTriggered) current.hasTriggered = false;
-                    if (current.hasCollided) current.hasCollided = false;
-                    if (other.hasTriggered) other.hasTriggered = false;
-                    if (other.hasCollided) other.hasCollided = false;
-                    current.interactedObject = null;
-                    other.interactedObject = null;
                 }
 
             }
