@@ -817,6 +817,10 @@ PrefabInstance:
       propertyPath: radius
       value: 1.26
       objectReference: {fileID: 0}
+    - target: {fileID: 4995866621970545850, guid: 7dca6b1fb8f3a5140aa7bb9b3de0b2b4, type: 3}
+      propertyPath: breakParticles
+      value: 
+      objectReference: {fileID: 1743257075108752838, guid: fd477889ac87b344b9b487564d887735, type: 3}
     - target: {fileID: 7606642538965745224, guid: 7dca6b1fb8f3a5140aa7bb9b3de0b2b4, type: 3}
       propertyPath: m_Name
       value: Target
@@ -2030,7 +2034,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5779366623111346502, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.099998
+      value: -15.4
       objectReference: {fileID: 0}
     - target: {fileID: 5779366623111346502, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
       propertyPath: m_LocalPosition.y

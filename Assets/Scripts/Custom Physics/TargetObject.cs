@@ -4,7 +4,10 @@ using CustomPhysics;
 
 public class TargetObject : MonoBehaviour
 {
+    [SerializeField] private GameObject breakParticles;
     PhysicsObject objPhysics;
+
+    private bool isHit = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +17,12 @@ public class TargetObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objPhysics.hasTriggered)
+        if (objPhysics.hasTriggered && !isHit)
         {
-            Debug.Log("HIT!");
+            isHit = true;
+            objPhysics.interactedObject.SetVelocity(Vector3.zero);
+            Instantiate(breakParticles, transform.position, Quaternion.identity);
+            objPhysics.isGettingDestroyed = true;
         }
     }
 }

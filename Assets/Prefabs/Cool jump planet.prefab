@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 0.8066038, b: 0.9483177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,7 +118,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 3, y: 0, z: 0}
@@ -126,6 +127,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!1 &5501995479306072864
 GameObject:
   m_ObjectHideFlags: 0
