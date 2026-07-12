@@ -163,7 +163,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -171,6 +172,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &58695229
 SpriteRenderer:
   serializedVersion: 2
@@ -304,7 +306,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -312,6 +315,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &104896680
 SpriteRenderer:
   serializedVersion: 2
@@ -415,7 +419,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -423,6 +428,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &129822988
 SpriteRenderer:
   serializedVersion: 2
@@ -541,7 +547,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -549,6 +556,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &206413355
 SpriteRenderer:
   serializedVersion: 2
@@ -667,7 +675,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -675,6 +684,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &210222010
 SpriteRenderer:
   serializedVersion: 2
@@ -889,7 +899,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -897,6 +908,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &330552825
 SpriteRenderer:
   serializedVersion: 2
@@ -1000,7 +1012,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1008,6 +1021,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &400947337
 SpriteRenderer:
   serializedVersion: 2
@@ -1126,7 +1140,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1134,6 +1149,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &530063997
 SpriteRenderer:
   serializedVersion: 2
@@ -1252,7 +1268,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1260,6 +1277,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &615822720
 SpriteRenderer:
   serializedVersion: 2
@@ -1393,7 +1411,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1401,6 +1420,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &676298480
 SpriteRenderer:
   serializedVersion: 2
@@ -1504,7 +1524,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1512,6 +1533,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &691918603
 SpriteRenderer:
   serializedVersion: 2
@@ -1645,7 +1667,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1653,6 +1676,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &706584680
 SpriteRenderer:
   serializedVersion: 2
@@ -1816,7 +1840,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1824,6 +1849,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &931453067
 SpriteRenderer:
   serializedVersion: 2
@@ -1942,7 +1968,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1950,6 +1977,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1005709263
 SpriteRenderer:
   serializedVersion: 2
@@ -2032,6 +2060,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2479991526077310649, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5779366623111346502, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.4
@@ -2075,6 +2107,10 @@ PrefabInstance:
     - target: {fileID: 5944462669539206625, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368812328588990762, guid: 6ad746529e1543443b6f555ff45aa798, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2182,7 +2218,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2190,6 +2227,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1153270980
 SpriteRenderer:
   serializedVersion: 2
@@ -2308,7 +2346,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2316,6 +2355,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1169662136
 SpriteRenderer:
   serializedVersion: 2
@@ -2524,7 +2564,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2532,6 +2573,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1355626687
 SpriteRenderer:
   serializedVersion: 2
@@ -2650,7 +2692,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2658,6 +2701,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1554423279
 SpriteRenderer:
   serializedVersion: 2
@@ -2791,7 +2835,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2799,6 +2844,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1611422605
 SpriteRenderer:
   serializedVersion: 2
@@ -2917,7 +2963,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2925,6 +2972,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1669608498
 SpriteRenderer:
   serializedVersion: 2
@@ -3028,7 +3076,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3036,6 +3085,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1682468082
 SpriteRenderer:
   serializedVersion: 2
@@ -3169,7 +3219,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3177,6 +3228,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1752882248
 SpriteRenderer:
   serializedVersion: 2
@@ -3432,7 +3484,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3440,6 +3493,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1846886863
 SpriteRenderer:
   serializedVersion: 2
@@ -3543,7 +3597,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3551,6 +3606,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1945529789
 SpriteRenderer:
   serializedVersion: 2
@@ -3669,7 +3725,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3677,6 +3734,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &2000257158
 SpriteRenderer:
   serializedVersion: 2
@@ -3795,7 +3853,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3803,6 +3862,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &2076383249
 SpriteRenderer:
   serializedVersion: 2
@@ -3921,7 +3981,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -3929,6 +3990,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &2094260053
 SpriteRenderer:
   serializedVersion: 2
@@ -4085,8 +4147,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bc97e8d9d113f834ab0c70c81969c06b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4121,7 +4183,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -4129,12 +4192,13 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1819628977}
   - {fileID: 1063726444}
-  - {fileID: 1031426207}
   - {fileID: 255172005}
   - {fileID: 772333892}
+  - {fileID: 1031426207}

@@ -41,6 +41,20 @@ namespace CustomPhysics
             for (int i = 0; i < physObjs.Count; i++)
             {
                 PhysicsObject currentObj = physObjs[i];
+            
+                PhysicsStep(currentObj, physObjs).ApplyPhysics();
+                if (currentObj.isGettingDestroyed)
+                {
+                    physObjs.Remove(currentObj);
+                    Destroy(currentObj.gameObject);
+                    i--;
+                }
+            }
+
+
+            /*for (int i = 0; i < physObjs.Count; i++)
+            {
+                PhysicsObject currentObj = physObjs[i];
 
                 currentObj.hasTriggered = false;
                 currentObj.hasCollided = false;
@@ -109,6 +123,7 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
+                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -180,6 +195,8 @@ namespace CustomPhysics
                     }
                     else
                     {
+                        normal = CheckEdge(sphere, line, normal);
+                        current.interactedObject = other;
                         current.hasCollided = true;
                         normal = CheckEdge(sphere, line, normal);
                         current.interactedObject = other;
