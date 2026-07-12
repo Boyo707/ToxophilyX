@@ -25,7 +25,7 @@ public class ArrowLifeTime : MonoBehaviour
     private IEnumerator SpawnParticle()
     {
         canSpawn = false;
-        Instantiate(particle, transform.position, Quaternion.identity).transform.localEulerAngles = new Vector3(0,0, arrowPhys.rotation);
+        Instantiate(particle, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.1f);
         canSpawn = true;
     }

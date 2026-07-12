@@ -297,7 +297,7 @@ MonoBehaviour:
   maxPullDistance: 18
   maxShootStrength: 15
   trajectoryOrb: {fileID: 329041012783159053, guid: 0821bb2a29be92b42abb3f7a8edf42e9, type: 3}
-  predictionSteps: 90
+  predictionSteps: 70
   visualSteps: 8
   sprRenderer: {fileID: 6368812328588990762}
   idle: {fileID: 21300000, guid: c4fef30229a579146af1daaa20aff8f3, type: 3}

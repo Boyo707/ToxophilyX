@@ -41,7 +41,12 @@ namespace CustomPhysics
             for (int i = 0; i < physObjs.Count; i++)
             {
                 PhysicsObject currentObj = physObjs[i];
-            
+
+                currentObj.hasCollided = false;
+                currentObj.hasTriggered = false;
+                currentObj.interactedObject = null;
+    
+
                 PhysicsStep(currentObj, physObjs).ApplyPhysics();
                 if (currentObj.isGettingDestroyed)
                 {
@@ -123,7 +128,6 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
-                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -140,11 +144,6 @@ namespace CustomPhysics
                         float distanceOffset = current.Radius + other.Radius;
                         BounceOfCollider(current, other.physPosition, normal, distanceOffset);
                     }
-                }
-                else
-                {
-                    
-
                 }
             }
             else if (collisionIndex == 3)
@@ -186,7 +185,6 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
-                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -195,18 +193,12 @@ namespace CustomPhysics
                     }
                     else
                     {
-                        normal = CheckEdge(sphere, line, normal);
                         current.interactedObject = other;
                         current.hasCollided = true;
+
                         normal = CheckEdge(sphere, line, normal);
-                        current.interactedObject = other;
-                        current.interactedObject = other;
                         BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
-                }
-                else
-                {
-                    
                 }
 
             }
