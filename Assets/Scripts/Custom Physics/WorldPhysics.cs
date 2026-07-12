@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem.XR.Haptics;
 
 namespace CustomPhysics
 {
@@ -106,15 +103,20 @@ namespace CustomPhysics
                     
                     if (current.IsTrigger)
                     {
+                        current.interactedObject = other;
                         current.hasTriggered = true;
                     }
                     else if (other.IsTrigger)
                     {
+                        other.interactedObject = current;
                         other.hasTriggered = true;
                     }
                     else
                     {
+                        bool smth = SpheresInRange(current, other);
+                        current.interactedObject = other;
                         current.hasCollided = true;
+
                         Vector3 normal = (current.physPosition - other.physPosition).normalized;
                         float distanceOffset = current.Radius + other.Radius;
                         BounceOfCollider(current, other.physPosition, normal, distanceOffset);
@@ -126,6 +128,9 @@ namespace CustomPhysics
                     if (current.hasCollided) current.hasCollided = false;
                     if (other.hasTriggered) other.hasTriggered = false;
                     if (other.hasCollided) other.hasCollided = false;
+                    current.interactedObject = null;
+                    other.interactedObject = null;
+
                 }
             }
             else if (collisionIndex == 3)
@@ -136,30 +141,34 @@ namespace CustomPhysics
                 PhysicsObject sphere = (int) current.ColliderShape == 1 ? current : other;
                 PhysicsObject line = (int)other.ColliderShape == 1 ? current : other;
 
-                float dot = ProjectionDot(sphere.physPosition, line.physPosition, line.GetLineNormal(), sphere.Radius);
-                float lowerDot = dot - line.LineHeight;
+                Vector3 topNormal = line.GetLineNormal();
+
+                Vector3 bottomPos = line.physPosition - topNormal * line.LineHeight;
+
+                float topDistance = Mathf.Abs(Vector3.Dot(sphere.physPosition - line.physPosition, topNormal));
+                float bottomDistance = Mathf.Abs(Vector3.Dot(sphere.physPosition - bottomPos, -topNormal));
 
                 Vector3 linePos = Vector3.zero;
                 Vector3 normal = Vector3.zero;
-                if(dot > -2)
-                {
-                    //do normal above 0 check
-                    if (dot < 0)
-                    {
-                        linePos = line.physPosition;
-                        normal = line.GetLineNormal();
-                    }
-                }
-                if(dot <= -2)
-                {
-                    //do below -4 check
-                    if (dot > -line.LineHeight)
-                    {
-                        linePos = line.physPosition;
-                        linePos += -line.GetLineNormal() * line.LineHeight;
-                        normal = -line.GetLineNormal();
 
-                    }
+                Debug.Log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+                Debug.Log("bottom dist: " + bottomDistance + " sphere rad: " + sphere.Radius);
+                Debug.Log("bottom dist: " + -topNormal);
+                Debug.Log("top dist: " + topDistance + " sphere rad: " + sphere.Radius);
+                Debug.Log(0 < 1);
+
+                //to prevent clipping.
+                float clampedRadius = Mathf.Clamp(sphere.Radius, 0.3f, float.MaxValue);
+
+                if (topDistance <= clampedRadius && topDistance <= bottomDistance)
+                {
+                    linePos = line.physPosition;
+                    normal = topNormal;
+                }
+                else if (bottomDistance <= clampedRadius)
+                {
+                    linePos = bottomPos;
+                    normal = -topNormal;
                 }
 
                 if (linePos != Vector3.zero && normal != Vector3.zero && InLineRange(sphere, line, normal))
@@ -167,15 +176,18 @@ namespace CustomPhysics
                     //check if line is in range AND if line is on edge.
                     if (current.IsTrigger)
                     {
+                        current.interactedObject = other;
                         current.hasTriggered = true;
                     }
                     else if (other.IsTrigger)
                     {
+                        other.interactedObject = current;
                         other.hasTriggered = true;
                     }
                     else
                     {
                         normal = CheckEdge(sphere, line, normal);
+                        current.interactedObject = other;
                         current.hasCollided = true;
                         BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
@@ -186,8 +198,10 @@ namespace CustomPhysics
                     if (current.hasCollided) current.hasCollided = false;
                     if (other.hasTriggered) other.hasTriggered = false;
                     if (other.hasCollided) other.hasCollided = false;
+                    current.interactedObject = null;
+                    other.interactedObject = null;
                 }
-                
+
             }
             else if (collisionIndex == 4)
             {
@@ -201,15 +215,18 @@ namespace CustomPhysics
 
         private bool SpheresInRange(PhysicsObject current, PhysicsObject other)
         {
-            return Vector3.Distance(current.physPosition, other.physPosition) - current.Radius - other.Radius <= 0;
+            return Vector3.Distance(current.physPosition, other.physPosition) - (current.Radius  + other.Radius) <= 0;
         }
 
         private float ProjectionDot(Vector3 currentPos, Vector3 otherPos, Vector3 targetNormal, float offsetDistance)
         {
+
+
             Vector3 displacement = currentPos - otherPos;
-            displacement -= displacement * offsetDistance;
+
             Vector3 projection = Vector3.Project(displacement, targetNormal);
-            return Vector3.Dot(displacement, targetNormal);
+
+            return projection.magnitude - offsetDistance;
         }
         private bool InLineRange(PhysicsObject sphereObj, PhysicsObject lineObj, Vector3 normal)
         {
@@ -326,7 +343,6 @@ namespace CustomPhysics
 
         public List<Vector3> GetSimulatedPos(PhysicsObject objectToSimulate, int steps, Vector3 startPosition, Vector3 startVelocity)
         {
-
             objectToSimulate.velocity = startVelocity;
             objectToSimulate.physPosition = startPosition;
 

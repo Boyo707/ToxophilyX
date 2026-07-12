@@ -1,8 +1,5 @@
-using System;
-using TreeEditor;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+
 
 namespace CustomPhysics
 {
@@ -97,6 +94,8 @@ namespace CustomPhysics
         public float EdgeLength => edgelength;
 
 
+
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -160,8 +159,6 @@ namespace CustomPhysics
 
             //line
             float lineBaseLength = lineWidth / 2 - edgelength ;
-            Debug.Log(lineWidth);
-            Debug.Log(lineBaseLength);
             Gizmos.DrawLine(center - transform.right * lineBaseLength, center + transform.right * lineBaseLength);
 
 
@@ -176,6 +173,7 @@ namespace CustomPhysics
             Gizmos.DrawLine(bottomLine - transform.right * lineBaseLength, bottomLine - transform.right * lineWidth / 2);
 
             Gizmos.DrawRay(bottomLine, -GetLineNormal());
+            Gizmos.DrawRay(center, GetLineNormal());
 
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(center, planetPullDistance);
