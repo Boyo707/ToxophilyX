@@ -163,7 +163,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -171,6 +172,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &131849923
 SpriteRenderer:
   serializedVersion: 2
@@ -220,8 +222,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -307,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 411875880922180090, guid: 7dca6b1fb8f3a5140aa7bb9b3de0b2b4, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3131093025807427881, guid: 7dca6b1fb8f3a5140aa7bb9b3de0b2b4, type: 3}
       propertyPath: radius
@@ -366,7 +368,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -374,6 +377,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &475646804
 SpriteRenderer:
   serializedVersion: 2
@@ -423,8 +427,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -492,7 +496,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -500,6 +505,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &917529886
 SpriteRenderer:
   serializedVersion: 2
@@ -549,8 +555,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -618,7 +624,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -626,6 +633,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &924565038
 SpriteRenderer:
   serializedVersion: 2
@@ -675,8 +683,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -858,7 +866,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -866,6 +875,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1106568573
 SpriteRenderer:
   serializedVersion: 2
@@ -915,8 +925,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -984,7 +994,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -992,6 +1003,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1169662136
 SpriteRenderer:
   serializedVersion: 2
@@ -1041,8 +1053,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1247,7 +1259,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1255,6 +1268,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1822884390
 SpriteRenderer:
   serializedVersion: 2
@@ -1304,8 +1318,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1396,8 +1410,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1310fe3db9f4f9f4db0b3d63489c4ab0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1432,7 +1446,8 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 1
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -1440,6 +1455,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!4 &7621655282119469013
 Transform:
   m_ObjectHideFlags: 0
