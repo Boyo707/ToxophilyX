@@ -134,7 +134,6 @@ GameObject:
   m_Component:
   - component: {fileID: 255593636}
   - component: {fileID: 255593635}
-  - component: {fileID: 255593634}
   - component: {fileID: 255593633}
   m_Layer: 0
   m_Name: Floor (4)
@@ -142,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &255593633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -168,59 +168,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &255593634
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255593632}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &255593635
 SpriteRenderer:
   serializedVersion: 2
@@ -310,7 +266,6 @@ GameObject:
   m_Component:
   - component: {fileID: 342826632}
   - component: {fileID: 342826631}
-  - component: {fileID: 342826630}
   - component: {fileID: 342826629}
   m_Layer: 0
   m_Name: Floor (5)
@@ -318,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &342826629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -344,59 +300,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &342826630
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342826628}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &342826631
 SpriteRenderer:
   serializedVersion: 2
@@ -481,7 +393,6 @@ GameObject:
   m_Component:
   - component: {fileID: 437471255}
   - component: {fileID: 437471254}
-  - component: {fileID: 437471253}
   - component: {fileID: 437471256}
   m_Layer: 0
   m_Name: Floor
@@ -490,52 +401,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &437471253
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437471252}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &437471254
 SpriteRenderer:
   serializedVersion: 2
@@ -603,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437471252}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.25, y: -8.74, z: 0}
   m_LocalScale: {x: 14.74, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -622,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -635,11 +501,13 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
-  edgelength: 0
+  lineWidth: 14.74
+  lineHeight: 3.76
+  edgelength: 0.2
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!1 &469272146
@@ -857,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 1
   isTrigger: 0
   isPlanet: 1
@@ -870,11 +739,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!212 &530966396
@@ -951,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &578180399
 Transform:
   m_ObjectHideFlags: 0
@@ -1085,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 1
   isTrigger: 0
   isPlanet: 0
@@ -1098,11 +970,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: -4, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!212 &628619985
@@ -1224,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 2
   isTrigger: 0
   isPlanet: 1
@@ -1237,11 +1112,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!212 &632824408
@@ -1313,7 +1190,6 @@ GameObject:
   m_Component:
   - component: {fileID: 800458420}
   - component: {fileID: 800458419}
-  - component: {fileID: 800458418}
   - component: {fileID: 800458417}
   m_Layer: 0
   m_Name: Floor (3)
@@ -1321,7 +1197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &800458417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1334,6 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -1347,59 +1224,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &800458418
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800458416}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &800458419
 SpriteRenderer:
   serializedVersion: 2
@@ -1483,7 +1316,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819184399}
-  - component: {fileID: 819184401}
   - component: {fileID: 819184400}
   m_Layer: 0
   m_Name: Arrow (1)
@@ -1501,7 +1333,7 @@ Transform:
   m_GameObject: {fileID: 819184398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1, y: -5.31, z: 0}
+  m_LocalPosition: {x: 6.35, y: -6.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1520,6 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  hasPhysics: 1
   mass: 1
   isTrigger: 0
   isPlanet: 0
@@ -1529,63 +1362,19 @@ MonoBehaviour:
   lockRotation: 0
   hasGravity: 1
   gravityMultiplier: 1
-  localGravityDirection: {x: 0, y: -1, z: 0}
+  localGravityDirection: {x: 0, y: 0, z: 0}
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.16
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &819184401
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819184398}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.16, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.24, y: 0.22}
-  m_EdgeRadius: 0
 --- !u!1 &824942979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 2
   isTrigger: 0
   isPlanet: 1
@@ -1629,11 +1419,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!212 &824942981
@@ -1720,7 +1512,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1026115328}
   - component: {fileID: 1026115327}
-  - component: {fileID: 1026115326}
   - component: {fileID: 1026115325}
   m_Layer: 0
   m_Name: Floor (7)
@@ -1728,7 +1519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1026115325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,6 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -1754,59 +1546,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &1026115326
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026115324}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1026115327
 SpriteRenderer:
   serializedVersion: 2
@@ -1891,7 +1639,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1120843775}
   - component: {fileID: 1120843774}
-  - component: {fileID: 1120843773}
   - component: {fileID: 1120843772}
   m_Layer: 0
   m_Name: Floor (1)
@@ -1899,7 +1646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1120843772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,6 +1659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -1925,59 +1673,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &1120843773
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1120843771}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1120843774
 SpriteRenderer:
   serializedVersion: 2
@@ -2188,6 +1892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomPhysics.PhysicsObject
+  hasPhysics: 1
   mass: 1
   isTrigger: 0
   isPlanet: 0
@@ -2201,11 +1906,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.48
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 4, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!212 &1218963258
@@ -2310,7 +2017,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1557805773}
   - component: {fileID: 1557805772}
-  - component: {fileID: 1557805771}
   - component: {fileID: 1557805770}
   m_Layer: 0
   m_Name: Floor (2)
@@ -2318,7 +2024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1557805770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2331,6 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -2344,59 +2051,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &1557805771
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1557805769}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1557805772
 SpriteRenderer:
   serializedVersion: 2
@@ -2481,7 +2144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1615747190}
   - component: {fileID: 1615747189}
-  - component: {fileID: 1615747188}
   - component: {fileID: 1615747187}
   m_Layer: 0
   m_Name: Floor (6)
@@ -2489,7 +2151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1615747187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,6 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsObject
+  hasPhysics: 1
   mass: 0
   isTrigger: 0
   isPlanet: 0
@@ -2515,59 +2178,15 @@ MonoBehaviour:
   type: 2
   offset: {x: 0, y: 0, z: 0}
   radius: 0
-  lineLength: 14.74
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
---- !u!61 &1615747188
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615747186}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &1615747189
 SpriteRenderer:
   serializedVersion: 2
@@ -3035,7 +2654,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999920069}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3047,7 +2666,7 @@ Transform:
   - {fileID: 1971002450}
   - {fileID: 1811695730}
   m_Father: {fileID: 819184399}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &2036942617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +2773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2082340593
 Transform:
   m_ObjectHideFlags: 0
@@ -3180,52 +2799,6 @@ Transform:
   - {fileID: 1615747190}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &140934004149377974
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8692342949827229667}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.16, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.24, y: 0.22}
-  m_EdgeRadius: 0
 --- !u!114 &1138987100100810090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +2811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3f111d37b8d4584d973709a92b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  hasPhysics: 1
   mass: 1
   isTrigger: 0
   isPlanet: 0
@@ -3251,11 +2825,13 @@ MonoBehaviour:
   type: 1
   offset: {x: 0, y: 0, z: 0}
   radius: 0.16
-  lineLength: 0
+  lineWidth: 0
+  lineHeight: 0
   edgelength: 0
   physPosition: {x: 0, y: 0, z: 0}
   velocity: {x: 1, y: 0, z: 0}
   rotation: 0
+  isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
 --- !u!1 &1419621049164367367
@@ -4005,7 +3581,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5217120419926826259}
-  - component: {fileID: 140934004149377974}
   - component: {fileID: 1138987100100810090}
   m_Layer: 0
   m_Name: Arrow
@@ -4013,7 +3588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &8806090267370355187
 PrefabInstance:
   m_ObjectHideFlags: 0

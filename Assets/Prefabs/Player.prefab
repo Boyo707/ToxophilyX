@@ -363,7 +363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5944462669539206625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.08245, y: -4.94671, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -385,11 +385,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   bow: {fileID: 1929858519478351786}
-  arrow: {fileID: 7754847187950191560, guid: 0cc0773bfa6dad3438084ffc08fb2f71, type: 3}
+  arrow: {fileID: 7754847187950191560, guid: fa46e48c73f76284e84e73ed4bc00118, type: 3}
   shootingPoint: {fileID: 4538844718261965782}
   maxPullDistance: 18
   maxShootStrength: 15
-  distance: 0
-  strength: 0
-  arrowSpeed: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0, z: 0}
+  trajectoryOrb: {fileID: 329041012783159053, guid: 0821bb2a29be92b42abb3f7a8edf42e9, type: 3}
+  predictionSteps: 90
+  visualSteps: 8
+  predictedPositions: []
+  visualObjects: []

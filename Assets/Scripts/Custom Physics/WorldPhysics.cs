@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 
@@ -42,6 +44,20 @@ namespace CustomPhysics
             for (int i = 0; i < physObjs.Count; i++)
             {
                 PhysicsObject currentObj = physObjs[i];
+            
+                PhysicsStep(currentObj, physObjs).ApplyPhysics();
+                if (currentObj.isGettingDestroyed)
+                {
+                    physObjs.Remove(currentObj);
+                    Destroy(currentObj.gameObject);
+                    i--;
+                }
+            }
+
+
+            /*for (int i = 0; i < physObjs.Count; i++)
+            {
+                PhysicsObject currentObj = physObjs[i];
 
                 if (currentObj.HasGravity && currentObj.HasPhysics)
                 {
@@ -77,7 +93,7 @@ namespace CustomPhysics
                     physObjs.Remove(currentObj);
                     Destroy(currentObj.gameObject);
                 }
-            }
+            }*/
         }
 
         private void VerifyCollision(PhysicsObject current, PhysicsObject other)
@@ -101,7 +117,7 @@ namespace CustomPhysics
                         current.hasCollided = true;
                         Vector3 normal = (current.physPosition - other.physPosition).normalized;
                         float distanceOffset = current.Radius + other.Radius;
-                        BounceOfCollider(current, other, normal, distanceOffset);
+                        BounceOfCollider(current, other.physPosition, normal, distanceOffset);
                     }
                 }
                 else
@@ -120,8 +136,35 @@ namespace CustomPhysics
                 PhysicsObject sphere = (int) current.ColliderShape == 1 ? current : other;
                 PhysicsObject line = (int)other.ColliderShape == 1 ? current : other;
 
-                if(ProjectionDot(sphere, line, line.GetLineNormal(), sphere.Radius) < 0)
+                float dot = ProjectionDot(sphere.physPosition, line.physPosition, line.GetLineNormal(), sphere.Radius);
+                float lowerDot = dot - line.LineHeight;
+
+                Vector3 linePos = Vector3.zero;
+                Vector3 normal = Vector3.zero;
+                if(dot > -2)
                 {
+                    //do normal above 0 check
+                    if (dot < 0)
+                    {
+                        linePos = line.physPosition;
+                        normal = line.GetLineNormal();
+                    }
+                }
+                if(dot <= -2)
+                {
+                    //do below -4 check
+                    if (dot > -line.LineHeight)
+                    {
+                        linePos = line.physPosition;
+                        linePos += -line.GetLineNormal() * line.LineHeight;
+                        normal = -line.GetLineNormal();
+
+                    }
+                }
+
+                if (linePos != Vector3.zero && normal != Vector3.zero && InLineRange(sphere, line, normal))
+                {
+                    //check if line is in range AND if line is on edge.
                     if (current.IsTrigger)
                     {
                         current.hasTriggered = true;
@@ -132,8 +175,9 @@ namespace CustomPhysics
                     }
                     else
                     {
+                        normal = CheckEdge(sphere, line, normal);
                         current.hasCollided = true;
-                        BounceOfCollider(current, other, line.GetLineNormal(), sphere.Radius);
+                        BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
                 }
                 else
@@ -160,26 +204,44 @@ namespace CustomPhysics
             return Vector3.Distance(current.physPosition, other.physPosition) - current.Radius - other.Radius <= 0;
         }
 
-        private float ProjectionDot(PhysicsObject currentObj, PhysicsObject otherObj, Vector3 targetNormal, float someDistance)
+        private float ProjectionDot(Vector3 currentPos, Vector3 otherPos, Vector3 targetNormal, float offsetDistance)
         {
-            Vector3 displacement = currentObj.physPosition - otherObj.physPosition;
+            Vector3 displacement = currentPos - otherPos;
+            displacement -= displacement * offsetDistance;
             Vector3 projection = Vector3.Project(displacement, targetNormal);
-            return Vector3.Dot(displacement, targetNormal) - someDistance;
+            return Vector3.Dot(displacement, targetNormal);
+        }
+        private bool InLineRange(PhysicsObject sphereObj, PhysicsObject lineObj, Vector3 normal)
+        {
+            Vector3 displacement = sphereObj.physPosition - lineObj.physPosition;
+            Vector3 projection = Vector3.ProjectOnPlane(displacement, normal);
+            return projection.magnitude < lineObj.LineWidth;
         }
 
-        private void BounceOfCollider(PhysicsObject currentObj, PhysicsObject otherObj, Vector3 targetNormal, float someDistance)
+        private Vector3 CheckEdge(PhysicsObject sphereObj, PhysicsObject lineObj, Vector3 normal)
+        {
+            Vector3 displacement = sphereObj.physPosition - lineObj.physPosition;
+            Vector3 projection = Vector3.ProjectOnPlane(displacement, normal);
+            if(projection.magnitude > lineObj.LineWidth - lineObj.EdgeLength)
+            {
+                return displacement.normalized;
+            }
+            return normal;
+        }
+
+        private void BounceOfCollider(PhysicsObject currentObj, Vector3 otherPos, Vector3 targetNormal, float someDistance)
         {
             Vector3 thisVelocity = currentObj.velocity;
-            Vector3 normal = targetNormal;
-            float normalVelocityDot = Vector2.Dot(thisVelocity, normal);
+            float normalVelocityDot = Vector2.Dot(thisVelocity, targetNormal);
             float magnitude = thisVelocity.magnitude;
+
+            float dot = ProjectionDot(currentObj.physPosition, otherPos, targetNormal, someDistance);
 
             //add a check if its going down hill 
             if (magnitude < 0.66f)
             {
                 //start resting
-                float dot = ProjectionDot(currentObj, otherObj, targetNormal, someDistance);
-                Vector3 diff = normal * -dot;
+                Vector3 diff = targetNormal * Mathf.Abs(dot);
 
                 currentObj.physPosition += diff;
 
@@ -191,14 +253,13 @@ namespace CustomPhysics
                 //bounce
 
                 //place above collision line to prevent clipping
-                float projDot = ProjectionDot(currentObj, otherObj, targetNormal, someDistance);
 
-                Vector3 diff = normal * (-projDot + collisionSkin);
+                Vector3 diff = targetNormal * (Mathf.Abs(dot) + collisionSkin);
 
                 currentObj.physPosition += diff;
 
                 //bounce code
-                Vector3 normalVelocity = normalVelocityDot * normal;
+                Vector3 normalVelocity = normalVelocityDot * targetNormal;
 
                 Vector3 tangentVelocity = thisVelocity - normalVelocity;
 
@@ -230,16 +291,51 @@ namespace CustomPhysics
             }
         }
 
-        private void RemoveEmpty()
+        private PhysicsObject PhysicsStep(PhysicsObject currentObj, List<PhysicsObject> otherObjects)
         {
-            for (int i = 0; i < physObjs.Count; i++)
+
+            if (currentObj.HasGravity && currentObj.HasPhysics)
             {
-                if (physObjs[i] == null)
-                {
-                    physObjs.RemoveAt(i);
-                    i = 0;
-                }
+                Vector3 gravityDir = currentObj.LocalGravityDirection == worldGravitDir ? worldGravitDir : currentObj.LocalGravityDirection;
+
+                currentObj.velocity += (gravityDir * gravitationalForce * currentObj.GravityMultiplier * Time.fixedDeltaTime);
             }
+
+            currentObj.physPosition += currentObj.velocity * Time.fixedDeltaTime;
+
+
+            //maak een range circle dat bepaald of een object attracted kan worden of niet
+
+            foreach(PhysicsObject otherObj in otherObjects)
+            {
+                if (currentObj == otherObj) continue;
+
+                if (otherObj.IsPlanet && currentObj.HasPhysics)
+                {
+                    PlanetPhysics(currentObj, otherObj);
+                }
+
+                if (currentObj.velocity == Vector3.zero) continue;
+
+                VerifyCollision(currentObj, otherObj);
+            }
+
+            return currentObj;
+                
+        }
+
+        public List<Vector3> GetSimulatedPos(PhysicsObject objectToSimulate, int steps, Vector3 startPosition, Vector3 startVelocity)
+        {
+
+            objectToSimulate.velocity = startVelocity;
+            objectToSimulate.physPosition = startPosition;
+
+            List<Vector3> positions = new();
+            for (int i = 0; i < steps; i++)
+            {
+                positions.Add(PhysicsStep(objectToSimulate, physObjs).physPosition);
+            }
+            return positions;
         }
 
         public void AssignPhysicsObject(PhysicsObject physObj)

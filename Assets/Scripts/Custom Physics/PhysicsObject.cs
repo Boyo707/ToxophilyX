@@ -1,4 +1,6 @@
+using System;
 using TreeEditor;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -32,7 +34,8 @@ namespace CustomPhysics
         [Header("Circle")]
         [SerializeField] private float radius;
         [Header("Line")]
-        [SerializeField] private float lineLength;
+        [SerializeField] private float lineWidth;
+        [SerializeField] private float lineHeight;
         [SerializeField] private float edgelength;
         private Vector2 netForce;
 
@@ -67,6 +70,10 @@ namespace CustomPhysics
                     return radius * transform.localScale.y / 2;
                 }
             }
+            set
+            {
+                radius = value;
+            }
         }
         public Vector2 NetForce => netForce;
 
@@ -84,6 +91,10 @@ namespace CustomPhysics
         public bool hasTriggered = false;
 
         public ColliderType ColliderShape => type;
+
+        public float LineWidth => lineWidth / 2;
+        public float LineHeight => lineHeight;
+        public float EdgeLength => edgelength;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -148,13 +159,23 @@ namespace CustomPhysics
             Gizmos.DrawRay(transform.position + offset, velocity);
 
             //line
-            float lineBaseLength = (lineLength - edgelength) / 2;
-            Gizmos.DrawLine(center - -transform.right * lineBaseLength, center - transform.right * lineBaseLength);
+            float lineBaseLength = lineWidth / 2 - edgelength ;
+            Debug.Log(lineWidth);
+            Debug.Log(lineBaseLength);
+            Gizmos.DrawLine(center - transform.right * lineBaseLength, center + transform.right * lineBaseLength);
+
+
+            Vector3 bottomLine = center + -GetLineNormal() * LineHeight;
+            Gizmos.DrawLine(bottomLine - transform.right * lineBaseLength, bottomLine + transform.right * lineBaseLength);
+
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(center - -transform.right * lineBaseLength, center - -transform.right * lineLength / 2);
-            Gizmos.DrawLine(center - transform.right * lineBaseLength, center - transform.right * lineLength / 2);
-            //Gizmos.DrawRay(center, Vector2.Perpendicular(transform.right * lineBaseLength).normalized);
-            Gizmos.DrawRay(center, GetLineNormal());
+            Gizmos.DrawLine(center + transform.right * lineBaseLength, center + transform.right * lineWidth / 2);
+            Gizmos.DrawLine(center - transform.right * lineBaseLength, center - transform.right * lineWidth / 2);
+
+            Gizmos.DrawLine(bottomLine + transform.right * lineBaseLength, bottomLine + transform.right * lineWidth / 2);
+            Gizmos.DrawLine(bottomLine - transform.right * lineBaseLength, bottomLine - transform.right * lineWidth / 2);
+
+            Gizmos.DrawRay(bottomLine, -GetLineNormal());
 
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(center, planetPullDistance);

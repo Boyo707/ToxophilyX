@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ArrowLifeTime : MonoBehaviour
 {
-    private void Update()
-    {
-
-    }
 
     void OnBecameVisible()
     {
@@ -18,5 +14,10 @@ public class ArrowLifeTime : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         GetComponent<PhysicsObject>().DestroyObject();
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }
