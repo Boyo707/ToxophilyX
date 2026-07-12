@@ -305,6 +305,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &255593635
 SpriteRenderer:
   serializedVersion: 2
@@ -437,6 +438,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &342826631
 SpriteRenderer:
   serializedVersion: 2
@@ -638,6 +640,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!1 &469272146
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +879,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &530966396
 SpriteRenderer:
   serializedVersion: 2
@@ -1204,6 +1208,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &628619985
 SpriteRenderer:
   serializedVersion: 2
@@ -1346,6 +1351,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &632824408
 SpriteRenderer:
   serializedVersion: 2
@@ -1458,6 +1464,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &800458419
 SpriteRenderer:
   serializedVersion: 2
@@ -1600,6 +1607,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!1 &824942979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1661,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &824942981
 SpriteRenderer:
   serializedVersion: 2
@@ -1908,6 +1917,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1026115327
 SpriteRenderer:
   serializedVersion: 2
@@ -2035,6 +2045,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1120843774
 SpriteRenderer:
   serializedVersion: 2
@@ -2268,6 +2279,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1218963258
 SpriteRenderer:
   serializedVersion: 2
@@ -2541,6 +2553,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1557805772
 SpriteRenderer:
   serializedVersion: 2
@@ -2796,6 +2809,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!212 &1615747189
 SpriteRenderer:
   serializedVersion: 2
@@ -3534,6 +3548,7 @@ MonoBehaviour:
   isGettingDestroyed: 0
   hasCollided: 0
   hasTriggered: 0
+  interactedObject: {fileID: 0}
 --- !u!1 &1419621049164367367
 GameObject:
   m_ObjectHideFlags: 0

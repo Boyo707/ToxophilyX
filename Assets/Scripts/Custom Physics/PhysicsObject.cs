@@ -93,6 +93,8 @@ namespace CustomPhysics
         public float LineHeight => lineHeight;
         public float EdgeLength => edgelength;
 
+        public PhysicsObject interactedObject;
+
 
 
 

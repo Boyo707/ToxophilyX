@@ -105,6 +105,7 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
+                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -178,6 +179,7 @@ namespace CustomPhysics
                     {
                         current.interactedObject = other;
                         current.hasTriggered = true;
+                        current.interactedObject = other;
                     }
                     else if (other.IsTrigger)
                     {
@@ -189,6 +191,7 @@ namespace CustomPhysics
                         normal = CheckEdge(sphere, line, normal);
                         current.interactedObject = other;
                         current.hasCollided = true;
+                        current.interactedObject = other;
                         BounceOfCollider(current, linePos, normal, sphere.Radius);
                     }
                 }
