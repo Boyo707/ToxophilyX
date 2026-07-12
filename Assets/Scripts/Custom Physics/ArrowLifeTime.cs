@@ -1,17 +1,22 @@
+using CustomPhysics;
+using System.Collections;
 using UnityEngine;
 
 public class ArrowLifeTime : MonoBehaviour
 {
-    [SerializeField] private float lifeTime = 10;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        Destroy(gameObject, lifeTime);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnBecameVisible()
     {
-        
+        StopAllCoroutines();
+    }
+
+    IEnumerator OnBecameInvisible()
+    {
+        yield return new WaitForSeconds(2);
+        GetComponent<PhysicsObject>().DestroyObject();
     }
 }
