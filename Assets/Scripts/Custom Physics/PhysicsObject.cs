@@ -1,4 +1,6 @@
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace CustomPhysics
 {
@@ -12,6 +14,7 @@ namespace CustomPhysics
     {
 
         [Header("Physics")]
+        [SerializeField] private bool hasPhysics = true;
         [SerializeField] private float mass = 1;
         [SerializeField] private bool isTrigger = false;
         [SerializeField] private bool isPlanet = false;
@@ -37,6 +40,7 @@ namespace CustomPhysics
 
 
         //velocity
+        public bool HasPhysics => hasPhysics;
         public float Mass => mass;
         public bool IsTrigger => isTrigger;
         public bool IsPlanet => isPlanet;
@@ -46,7 +50,24 @@ namespace CustomPhysics
         public bool HasGravity => hasGravity;
         public float GravityMultiplier => gravityMultiplier;
         public Vector3 LocalGravityDirection => localGravityDirection;
-        public float Radius => radius;
+        public float Radius
+        {
+            get 
+            {
+                if(transform.localScale.x == transform.localScale.y)
+                {
+                    return radius * transform.localScale.x / 2;
+                }
+                else if(transform.localScale.x > transform.localScale.y)
+                {
+                    return radius * transform.localScale.x / 2;
+                }
+                else
+                {
+                    return radius * transform.localScale.y / 2;
+                }
+            }
+        }
         public Vector2 NetForce => netForce;
 
         public Vector3 physPosition = Vector3.zero;
@@ -54,6 +75,8 @@ namespace CustomPhysics
         public Vector3 velocity = Vector3.zero;
 
         public float rotation = 0;
+
+        public bool isGettingDestroyed = false;
 
         //collision
         //line
@@ -90,6 +113,7 @@ namespace CustomPhysics
 
                 transform.eulerAngles = new Vector3(0, 0, -rotation);
             }
+
         }
 
         public void SetVelocity(Vector3 newVelocity)
@@ -108,13 +132,18 @@ namespace CustomPhysics
             return Vector2.Perpendicular(transform.right).normalized;
         }
 
+        public void DestroyObject()
+        {
+            isGettingDestroyed = true;
+        }
+
         private void OnDrawGizmos()
         {
             Vector3 newOffset = offset;
             Vector3 center = transform.position + newOffset;
             Gizmos.color = Color.red;
             //circle
-            Gizmos.DrawWireSphere(center, radius);
+            Gizmos.DrawWireSphere(center, Radius);
 
             Gizmos.DrawRay(transform.position + offset, velocity);
 

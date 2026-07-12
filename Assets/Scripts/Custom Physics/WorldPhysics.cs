@@ -43,13 +43,12 @@ namespace CustomPhysics
             {
                 PhysicsObject currentObj = physObjs[i];
 
-                if (currentObj.HasGravity)
+                if (currentObj.HasGravity && currentObj.HasPhysics)
                 {
                     Vector3 gravityDir = currentObj.LocalGravityDirection == worldGravitDir ? worldGravitDir : currentObj.LocalGravityDirection;
 
                     currentObj.velocity += (gravityDir * gravitationalForce * currentObj.GravityMultiplier * Time.fixedDeltaTime);
                 }
-
 
                 currentObj.physPosition += currentObj.velocity * Time.fixedDeltaTime;
 
@@ -61,7 +60,7 @@ namespace CustomPhysics
                     PhysicsObject otherObj = physObjs[j];
                     if (currentObj == otherObj) continue;
 
-                    if (otherObj.IsPlanet)
+                    if (otherObj.IsPlanet && currentObj.HasPhysics)
                     {
                         PlanetPhysics(currentObj, otherObj);
                     }
@@ -71,12 +70,13 @@ namespace CustomPhysics
                     VerifyCollision(currentObj, otherObj);
 
                 }
-                if (currentObj == null)
-                {
-                    RemoveEmpty();
-                    continue;
-                }
+                
                 currentObj.ApplyPhysics();
+                if (currentObj.isGettingDestroyed)
+                {
+                    physObjs.Remove(currentObj);
+                    Destroy(currentObj.gameObject);
+                }
             }
         }
 
@@ -208,7 +208,6 @@ namespace CustomPhysics
 
                 Vector3 reflectedVelocity = normalVelocity + tangentVelocity;
 
-                Debug.Log("Starting velocity: " + thisVelocity + " reflected: " + reflectedVelocity);
                 currentObj.velocity = reflectedVelocity;
             }
         }
@@ -226,8 +225,7 @@ namespace CustomPhysics
                 float devidedG = gForce / currentObj.Mass;
 
                 Vector3 acceleration = direction.normalized * gForce;
-                Debug.Log(direction.normalized);
-                Debug.Log(acceleration);
+
                 currentObj.velocity += acceleration;
             }
         }

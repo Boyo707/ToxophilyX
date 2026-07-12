@@ -18,6 +18,8 @@ public class PlayerControlls : MonoBehaviour
 
     public Vector3 mousePos;
 
+    private GameObject previousArrow;
+
     // Update is called once per frame
     void Update()
     {
@@ -36,12 +38,17 @@ public class PlayerControlls : MonoBehaviour
 
         float rotation = radians * Mathf.Rad2Deg;
 
-        bow.eulerAngles = new Vector3(0, 0, -rotation);
+        if(rotation > 0)
+        {
+            bow.eulerAngles = new Vector3(0, 0, -rotation);
+        }
+
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject spawnedObj = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
-            spawnedObj.GetComponent<PhysicsObject>().SetVelocity(direction.normalized * strength);
+            if (previousArrow != null) previousArrow.GetComponent<PhysicsObject>().DestroyObject();
+            previousArrow = Instantiate(arrow, shootingPoint.position, Quaternion.identity);
+            previousArrow.GetComponent<PhysicsObject>().SetVelocity(direction.normalized * strength);
         }
 
     }
