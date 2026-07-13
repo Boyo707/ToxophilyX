@@ -23,7 +23,6 @@ namespace CustomPhysics
             else
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
             }
 
             if (velocityScalar == 0)
